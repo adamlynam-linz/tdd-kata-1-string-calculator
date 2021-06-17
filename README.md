@@ -10,36 +10,76 @@
 
 ### 1. Return a zero for an empty string
 
-    “” == 0
+For example
+
+    "" == 0
     
 ### 2. If a single number is received, return that number
 
-    “1” == 1
+For example
+
+    "1" == 1
    
 ### 3. If two numbers are received, separated by a comma, return the sum of those numbers
 
-    “1,2” == 3
+For example
+
+    "1,2" == 3
     
 ### 4. Handle receiving any amount of numbers
 
 ### 5. Handle new lines as well as commas between numbers
-  1.	the following input is ok:
 
-    “1\n2,3” == 6
+The following input is ok:
+
+    "1\n2,3" == 6
     
-  3.	the following is INVALID input, so do not expect it:
+The following is INVALID input, so do not expect it:
 
-    “1,\n”
+    "1,\n"
 
 ### 6. Support different delimiters between numbers
 
 To change a delimiter, the beginning of the string will contain a separate line that looks like this:   
 
-    “//[delimiter]\n[numbers...]”
+    "//[delimiter]\n[numbers...]"
 
-For example
-    “//;\n1;2”== 3 since the default delimiter is ‘;’
+For example, since the default delimiter is ‘;’:
+
+    "//;\n1;2" == 3
 
 **Note: All existing scenarios and tests should still be supported**
 
-### 7. Throw an exception if a negative number is included, the exception message should contain the negative number
+### 7. Throw an exception if a negative number is included, the exception message should contain the negative number that was included
+
+### 8. If there are multiple negative numbers, ensure all of them appear in the exception message
+
+### 9. Numbers bigger than 1000 should be ignored
+
+For example:
+
+    "1001,2" == 2
+
+### 10. Support delimiters of any length
+
+A multi-character delimiter will be surrounded by square brackets, formatted as:
+
+    "//[delimiter]\n"
+
+For example:
+
+    "//[***]\n1***2***3" == 6
+
+### 11. Allow multiple delimiters
+
+Multiple delimiters will be surrounded by square brackets one after another, formatted as:
+
+    "//[delim1][delim2]\n"
+
+For example:
+
+    "//[*][%]\n1*2%3" == 6
+
+### 12. Refactoring
+
+You reached the end of the exercise. Hopefully you have been refactoring as you go; but consider taking some time to reflect on how you might improve the maintainability or understandability of your code.
